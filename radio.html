@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Радио Плеер</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .player {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            margin-top: 0;
+        }
+        #playPauseBtn {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="player">
+        <h1>Seven skies radio</h1>
+        <audio id="audioPlayer" preload="auto">
+            <source src="https://radio.svnsks.ru/radio/8000/stream1" type="audio/mpeg">
+            Ваш браузер не поддерживает аудио элемент.
+        </audio>
+        <button id="playPauseBtn">Воспроизвести</button>
+    </div>
+
+    <script>
+        const audioPlayer = document.getElementById('audioPlayer');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+
+        playPauseBtn.addEventListener('click', togglePlay);
+
+        function togglePlay() {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                playPauseBtn.textContent = 'Пауза';
+            } else {
+                audioPlayer.pause();
+                playPauseBtn.textContent = 'Воспроизвести';
+            }
+        }
+
+        audioPlayer.addEventListener('playing', () => {
+            playPauseBtn.textContent = 'Пауза';
+        });
+
+        audioPlayer.addEventListener('pause', () => {
+            playPauseBtn.textContent = 'Воспроизвести';
+        });
+    </script>
+</body>
+</html>
